@@ -2,18 +2,23 @@ package giovanni.springdata;
 
 import giovanni.springdata.entities.*;
 import giovanni.springdata.enums.OrderStateEnum;
+import giovanni.springdata.service.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 @Component
 public class MyRunner implements CommandLineRunner {
 
     @Autowired
     private Menu menu;
+    @Autowired
+    private PizzaService pizzaService;
 
 
 
@@ -43,12 +48,17 @@ public class MyRunner implements CommandLineRunner {
 
             System.out.println(order);
 
+            menu.getMenu();
 */
-          //  menu.getMenu();
+            Toppings cheese = new Toppings("cheese" , 120 , 0.99);
+            List<Toppings> marghTps = new ArrayList<>();
+            marghTps.add(cheese);
+            Pizza margh = new Pizza("margherita" , 5.99 , 700 ,marghTps);
+            pizzaService.savePizza(margh);
+
         } catch (Exception ex) {
             System.err.println(ex.getMessage());
         }
-
 
 
 

@@ -6,6 +6,8 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,8 +23,9 @@ public class Pizza {
     private long id;
 
     private String name;
-    @OneToMany
-    private List<Toppings> toppingsList;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "pizza_id")
+    private List<Toppings> toppingsList = new ArrayList<>();
     private int calories;
     private double price;
 
