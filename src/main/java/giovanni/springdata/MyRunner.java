@@ -51,10 +51,15 @@ public class MyRunner implements CommandLineRunner {
             menu.getMenu();
 */
             Toppings cheese = new Toppings("cheese" , 120 , 0.99);
+            Toppings salami = new Toppings("salami" , 150 , 1.50);
             List<Toppings> marghTps = new ArrayList<>();
             marghTps.add(cheese);
-            Pizza margh = new Pizza("margherita" , 5.99 , 700 ,marghTps);
-            pizzaService.savePizza(margh);
+            List<Toppings> salamiTps = new ArrayList<>();
+            salamiTps.add(salami);
+            Pizza salame = new Pizza("salami" , 6.99 , 750 ,salamiTps);
+
+           // pizzaService.savePizza(salame);
+            pizzaService.findById(1);
 
         } catch (Exception ex) {
             System.err.println(ex.getMessage());

@@ -1,6 +1,7 @@
 package giovanni.springdata.service;
 
 import giovanni.springdata.entities.Pizza;
+import giovanni.springdata.exception.ItemNotFoundException;
 import giovanni.springdata.repositories.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,5 +14,9 @@ public class PizzaService {
     public void savePizza(Pizza newPizza){
         pizzaRepository.save(newPizza);
         System.out.println("La pizza " + newPizza + " è stata salvata correttamente nel db");
+    }
+
+    public Pizza findById(long pizzaId){
+        return pizzaRepository.findById(pizzaId).orElseThrow(() -> new ItemNotFoundException(pizzaId));
     }
 }

@@ -25,7 +25,7 @@ public class Pizza {
     private String name;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "pizza_id")
-    private List<Toppings> toppingsList = new ArrayList<>();
+    private List<Toppings> toppingsList;
     private int calories;
     private double price;
 
